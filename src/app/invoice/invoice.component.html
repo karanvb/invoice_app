@@ -1,1 +1,75 @@
-<p>invoice works!</p>
+<div class="container-fluid">
+  <h1 style="color: white;">Invoice</h1>
+  
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div class="input-group-text">Select Customer</div>
+    </div>
+    <select (change)="onChange($event.target.value)" type="text" class="form-control">
+      <option *ngFor="let party of partyData" [value]='party["id"]'>{{ party["partyName"] }}</option>
+    </select>
+  </div>
+  <button (click) = "onSave()" style="margin-top: 1%;" class="btn btn-success">Save</button>
+  <hr>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="col">
+        <div class="col">
+          <label>Name : {{partyName}}</label>
+        </div>
+        <div>
+          <label>Type : {{partyType}}</label>
+        </div>
+        <div>
+          <label>Phone Number :{{phone}}</label>
+        </div>
+        <div>
+          <label>Address</label>
+          <label>City :{{city}}</label>
+        </div>
+        <div>
+          <label>State :{{state}}</label>
+        </div>
+        <div>
+          <label>Postal Code :{{postal}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+    <hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">GST</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <div class="input-group">
+          <select (change)="onPChange($event.target.value)" type="text" class="form-control">
+            <option *ngFor="let product of productData" [value]='product["id"]'>{{ product["itemName"] }}</option>
+          </select>
+        </div>
+      </td>
+      <td><input type="number" (change)="onNChange($event.target.value)"></td>
+      <td>{{gst}}</td>
+      <td>{{sales}}</td>
+      <td>{{total}}</td>
+      <td><button class="btn btn-success">Add</button></td>
+      <td><button class="btn btn-danger">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
